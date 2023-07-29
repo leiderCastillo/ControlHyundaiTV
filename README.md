@@ -26,7 +26,8 @@ Package | Usage
 ------------ | -------------
 [vibration](https://pub.dev/packages/vibration) | Este paquete se usa principalmente para dar una retroalimentación tactial al usuario despues de pulsar un botón.
 [ir_sensor](https://pub.dev/packages/ir_sensor) | Se utiliza para enviar los codigos correspondientes de cada botón
-
+## Download
+[Descarga App](https://github.com/leiderCastillo/ControlHyundaiTV/releases/tag/Android)
 ## Building from Source
 
 1. Asegúrate de tener Flutter instalado en tu sistema. Si no lo tienes, sigue las instrucciones de instalación de Flutter en la [documentación oficial de Flutter](https://flutter.dev/docs/get-started/install).
