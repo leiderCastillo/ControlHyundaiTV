@@ -1,3 +1,4 @@
+import 'package:control_hyundai/Themes.dart';
 import 'package:flutter/material.dart';
 
 class BarButtons extends StatefulWidget {
@@ -33,7 +34,7 @@ class _BarButtonsState extends State<BarButtons> {
       height: widget.height,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: Colors.grey[200]
+        color: ThemeApp.colorButtons
       ),
       child: Column(
         children: [
@@ -43,7 +44,7 @@ class _BarButtonsState extends State<BarButtons> {
               child:
                 SizedBox(
                   width: widget.width,
-                  child:  Icon(widget.iconUpButton),
+                  child:  Icon(widget.iconUpButton,color: ThemeApp.colorFonts,),
                 )
               
             ),
@@ -57,7 +58,7 @@ class _BarButtonsState extends State<BarButtons> {
               onTap: (){widget.onPressedDown();},
               child: SizedBox(
                 width: widget.width,
-                child:  Icon(widget.iconDownButton),
+                child:  Icon(widget.iconDownButton,color:ThemeApp.colorFonts),
               )
             )
           ),

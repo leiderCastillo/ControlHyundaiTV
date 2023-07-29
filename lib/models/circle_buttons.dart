@@ -1,3 +1,4 @@
+import 'package:control_hyundai/Themes.dart';
 import 'package:flutter/material.dart';
 
 class CircleButtons extends StatefulWidget {
@@ -41,7 +42,7 @@ class _CircleButtonsState extends State<CircleButtons> {
           height: widget.radio* 0.6,
           color: Colors.transparent,
           child: Center(
-            child: Icon(icono),
+            child: Icon(icono,color: ThemeApp.colorFonts),
           ),
         ),
     );
@@ -55,7 +56,7 @@ class _CircleButtonsState extends State<CircleButtons> {
       height: widget.radio * 2,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: Colors.grey[200],
+        color: ThemeApp.colorButtons,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

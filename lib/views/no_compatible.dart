@@ -6,11 +6,20 @@ class NoCompatible extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text("Tu dispositivo no es compatible con\nInfra Rojo")
-      ],
+    return 
+    Scaffold(
+      body:
+      const 
+      Padding(
+        padding: EdgeInsets.only(left:40,right: 40),
+        child: 
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("Tu dispositivo no es compatible con Infra Rojo",textAlign: TextAlign.center,)
+          ],
+        )
+      )
     );
   }
 }

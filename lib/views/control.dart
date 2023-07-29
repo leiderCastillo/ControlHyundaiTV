@@ -1,3 +1,4 @@
+import 'package:control_hyundai/Themes.dart';
 import 'package:control_hyundai/codes.dart';
 import 'package:control_hyundai/funciones.dart';
 import 'package:control_hyundai/models/bar_buttons.dart';
@@ -15,83 +16,110 @@ class Control extends StatefulWidget {
 
 class _ControlState extends State<Control> {
   int contador = 0;
+
+
   @override
+  void initState() {
+    ThemeApp().setColors(
+      clButtons: temas[contador].colorButtons,
+      clFonts: temas[contador].colorFonts,
+      clBackground: temas[contador].colorScaffold
+    );
+    super.initState();
+  }
+    @override
   Widget build(BuildContext context) {
     return 
-    Padding(padding: const EdgeInsets.fromLTRB(30,50,30,20),
-    child:
-      Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Button(
-                onPressed: (){sendCode(code: Codes.apagar);}, 
-                icono: Icons.power_settings_new_rounded),
-              const Text("Hyundai Remote",textScaleFactor: 1.3,style: TextStyle(fontWeight: FontWeight.bold,),),
-              Button(
-                onPressed: (){print("theme");}, 
-                icono: Icons.light_mode_outlined),
-            ],
-          ),
-          const SizedBox(height: 20,),
-          Center(
-            child:
-            CircleButtons(
-              radio: 120,
-              onPressedCenter: (){sendCode(code: Codes.enter);},
-              onPressedDown: (){sendCode(code: Codes.down);},
-              onPressedLeft: (){sendCode(code: Codes.left);},
-              onPressedRight: (){sendCode(code: Codes.right);},
-              onPressedUp: (){sendCode(code: Codes.up);},
-            )
-          ),
-          const SizedBox(height: 20,),
-          Row(
+    Scaffold(
+      backgroundColor: ThemeApp.colorScaffoldBackground,
+      body:
+        Padding(padding: const EdgeInsets.fromLTRB(30,50,30,20),
+        child:
+          Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              BarButtons(
-                childMiddle: const Icon(Icons.volume_up_rounded),
-                iconDownButton: Icons.remove,
-                iconUpButton: Icons.add,
-                onPressedDown: (){sendCode(code: Codes.voldown);},
-                onPressedUp: (){sendCode(code: Codes.volup);},
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  ButtonRectangle(onPressed: (){sendCode(code: Codes.menu);},child: const Text("Menú"),),
-                  ButtonRectangle(onPressed: (){sendCode(code: Codes.sleep);},child: const Text("Sleep"),),
-                  ButtonRectangle(onPressed: (){sendCode(code: Codes.canal);},child: const Text("Canal"),),
+                  Button(
+                    onPressed: (){sendCode(code: Codes.apagar);}, 
+                    icono: Icons.power_settings_new_rounded
+                  ),
+                  Text("Hyundai Remote",textScaleFactor: 1.3,style: TextStyle(fontWeight: FontWeight.bold,color: ThemeApp.colorFonts),),
+                  Button(
+                    onPressed: (){
+                      setState(() {
+                        contador >= temas.length-1 ? contador=0 : contador++;
+                        print(contador);
+                        ThemeApp().setColors(
+                          clButtons: temas[contador].colorButtons,
+                          clFonts: temas[contador].colorFonts,
+                          clBackground: temas[contador].colorScaffold
+                        );
+                      });
+                      
+                    }, 
+                    icono: Icons.light_mode_outlined),
                 ],
               ),
-              BarButtons(
-                childMiddle: const Text("CH"),
-                iconDownButton: Icons.keyboard_arrow_down,
-                iconUpButton: Icons.keyboard_arrow_up,
-                onPressedDown: (){sendCode(code: Codes.chdown);},
-                onPressedUp: (){sendCode(code: Codes.chup);},
+              const SizedBox(height: 20,),
+              Center(
+                child:
+                CircleButtons(
+                  radio: 120,
+                  onPressedCenter: (){sendCode(code: Codes.enter);},
+                  onPressedDown: (){sendCode(code: Codes.down);},
+                  onPressedLeft: (){sendCode(code: Codes.left);},
+                  onPressedRight: (){sendCode(code: Codes.right);},
+                  onPressedUp: (){sendCode(code: Codes.up);},
+                )
+              ),
+              const SizedBox(height: 20,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  BarButtons(
+                    childMiddle: Icon(Icons.volume_up_rounded,color: ThemeApp.colorFonts),
+                    iconDownButton: Icons.remove,
+                    iconUpButton: Icons.add,
+                    onPressedDown: (){sendCode(code: Codes.voldown);},
+                    onPressedUp: (){sendCode(code: Codes.volup);},
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      ButtonRectangle(onPressed: (){sendCode(code: Codes.menu);},child: const Text("Menú"),),
+                      ButtonRectangle(onPressed: (){sendCode(code: Codes.sleep);},child: const Text("Sleep"),),
+                      ButtonRectangle(onPressed: (){sendCode(code: Codes.canal);},child: const Text("Canal"),),
+                    ],
+                  ),
+                  BarButtons(
+                    childMiddle: Text("CH",style: TextStyle(color: ThemeApp.colorFonts,fontWeight: FontWeight.bold),),
+                    iconDownButton: Icons.keyboard_arrow_down,
+                    iconUpButton: Icons.keyboard_arrow_up,
+                    onPressedDown: (){sendCode(code: Codes.chdown);},
+                    onPressedUp: (){sendCode(code: Codes.chup);},
+                  ),
+                ],
+              ),
+              Padding(
+                padding:const EdgeInsets.only(left: 20, right: 20),
+                child:
+                Row(
+                  children: [
+                    ButtonRectangle(onPressed: (){sendCode(code: Codes.mute);}, child: const Icon(Icons.volume_off_rounded)),
+                    const SizedBox(width: 10,),
+                    Expanded(
+                      child:  ButtonRectangle(onPressed: (){sendCode(code: Codes.exit);}, child: const Icon(Icons.keyboard_return)),
+                    ),
+                    const SizedBox(width: 10,),
+                    ButtonRectangle(onPressed: (){sendCode(code: Codes.input);}, child: const Icon(Icons.menu)),
+                  ],
+                )
               ),
             ],
-          ),
-          Padding(
-            padding:const EdgeInsets.only(left: 20, right: 20),
-            child:
-            Row(
-              children: [
-                ButtonRectangle(onPressed: (){sendCode(code: Codes.mute);}, child: const Icon(Icons.volume_off_rounded)),
-                const SizedBox(width: 10,),
-                Expanded(
-                  child:  ButtonRectangle(onPressed: (){sendCode(code: Codes.exit);}, child: const Icon(Icons.keyboard_return)),
-                ),
-                const SizedBox(width: 10,),
-                ButtonRectangle(onPressed: (){sendCode(code: Codes.input);}, child: const Icon(Icons.menu)),
-              ],
-            )
-          ),
-        ],
-      )
+          )
+        )
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:control_hyundai/Themes.dart';
 import 'package:flutter/material.dart';
 
 class Button extends StatefulWidget {
@@ -18,8 +19,8 @@ class _ButtonState extends State<Button> {
         shadowColor: Colors.transparent,
         shape: const CircleBorder(),
         padding: const EdgeInsets.all(20),
-        backgroundColor: Colors.grey[200],
-        foregroundColor: Colors.black,
+        backgroundColor: ThemeApp.colorButtons,
+        foregroundColor: ThemeApp.colorFonts,
       ),
       onPressed: (){widget.onPressed();},
       child:Icon(widget.icono)
