@@ -16,7 +16,9 @@ Aplicación para interactuar con el sensor de infrarrojos del dispositivo y darl
 - [x]  Distintos temas
 
 ## Screenshots
-![Imagen 3](.readme_files/screenshot.jpeg)
+|  | |  |  |  |
+|---------|---------|---------|---------|--------|
+![Imagen 1](.readme_files/cap1.jpg) | ![Imagen 2](.readme_files/cap2.jpg) | ![Imagen 3](.readme_files/cap3.jpg) | ![Imagen](.readme_files/cap4.jpg) | ![Imagen 5](.readme_files/cap5.jpg)
 
 ## Packages uses
 
