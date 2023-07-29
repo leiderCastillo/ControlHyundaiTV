@@ -13,6 +13,7 @@ Aplicación para interactuar con el sensor de infrarrojos del dispositivo y darl
 - [x]  Cambiar el canal hacia arriba o hacia abajo
 - [x]  Ajustar el volumen hacia arriba o hacia abajo
 - [x]  Control de funciones adicionales, como menú, retroceso y silencio
+- [x]  Distintos temas
 
 ## Screenshots
 ![Imagen 3](.readme_files/screenshot.jpeg)
